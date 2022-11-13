@@ -92,10 +92,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while (!cursor.isAfterLast()) {
             int id = cursor.getInt(0);
             String url = cursor.getString(1);
-
             entities entities = new entities(id,url);
             results.add(entities);
-
             cursor.moveToNext();
         }
         return results.size();

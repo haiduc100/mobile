@@ -40,43 +40,49 @@ public class MainActivity extends AppCompatActivity {
             Picasso.with(this).load(url).into(imageView);
             databaseHelper.insertImage(url);
             Toast.makeText(getApplicationContext(), "Picture added!", Toast.LENGTH_SHORT).show();
+            currentUrl = url;
             inputUrl.setText("");
         });
 
 
         btnPrev.setOnClickListener((view)->{
             DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
-            int id = databaseHelper.getIdImage(this.currentUrl);
-            if(id == 1){
-                Toast.makeText(getApplicationContext(), "Min", Toast.LENGTH_SHORT).show();
-            }else {
-                currentUrl= databaseHelper.getImageById(id-1);
-                Picasso.with(this).load(currentUrl).into(imageView);
-            }
+            int count = databaseHelper.getSize();
+            Log.d("count","prev"+count);
+//            if(count == 0){
+//                Toast.makeText(getApplicationContext(), "Nothing to show!", Toast.LENGTH_SHORT).show();
+//                return;
+//            }
+//            int id = databaseHelper.getIdImage(this.currentUrl);
+//            if(id == 1){
+//                Toast.makeText(getApplicationContext(), "Min", Toast.LENGTH_SHORT).show();
+//            }else {
+//                currentUrl= databaseHelper.getImageById(id-1);
+//                Picasso.with(this).load(currentUrl).into(imageView);
+//            }
 
         });
 
         btnNext.setOnClickListener(view -> {
             DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
-           int id = databaseHelper.getIdImage(this.currentUrl);
-           int count = databaseHelper.getSize();
-           if(id == count){
-               Toast.makeText(getApplicationContext(), "Max", Toast.LENGTH_SHORT).show();
-               return ;
-           }else {
-               currentUrl= databaseHelper.getImageById(id+1);
-               Picasso.with(this).load(currentUrl).into(imageView);
-           }
+            int count = databaseHelper.getSize();
+            Log.d("count","next"+count);
+
+//            if(count == 0){
+//                Toast.makeText(getApplicationContext(), "Nothing to show!", Toast.LENGTH_SHORT).show();
+//                return;
+//            }
+//            int id = databaseHelper.getIdImage(this.currentUrl);
+//            if(id == count){
+//                Toast.makeText(getApplicationContext(), "Max", Toast.LENGTH_SHORT).show();
+//            }else {
+//                currentUrl = databaseHelper.getImageById(id + 1);
+//                Picasso.with(this).load(currentUrl).into(imageView);
+//            }
 
 
         });
 
-        // Default image
-        currentUrl = "https://th.bing.com/th/id/OIP.3CRnT1KSwFkePYHzhcq6rgHaJQ?w=198&h=248&c=7&r=0&o=5&pid=1.7";
-        Picasso.with(this).load(currentUrl).into(imageView);
-        DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
-        databaseHelper.insertImage(currentUrl);
-        totalPicture.setText(databaseHelper.getSize());
 
 
     }
