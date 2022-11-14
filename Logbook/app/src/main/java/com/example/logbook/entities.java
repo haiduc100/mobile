@@ -1,28 +1,28 @@
 package com.example.logbook;
 
 public class entities {
-    int id;
-    String img;
 
-    public int getId() {
-        return id;
-    }
+  int id;
+  String img;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public String getImg() {
-        return img;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
+  public String getImg() {
+    return img;
+  }
 
-    public entities(int id,String img){
-        this.img = img;
-        this.id = id;
-    }
+  public void setImg(String img) {
+    this.img = img;
+  }
 
+  public entities(int id, String img) {
+    this.img = img;
+    this.id = id;
+  }
 }
